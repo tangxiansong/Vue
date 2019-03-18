@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>关注作者列表页面练习</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			#app {
+				width: 80%;
+				margin: 0 auto;
+			}
+
+			.container {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.top {
+				display: flex;
+				width: 90%;
+				margin: 0 auto;
+
+				align-items: center;
+				justify-content: space-between;
+			}
+
+			.card {
+				width: 80%;
+				height: 80%;
+				display: flex;
+				justify-content: space-between;
+				border: 1px solid #EEE;
+				border-radius: 5px;
+
+			}
+
+			.card img {
+				position: relative;
+				height: 50px;
+				width: 50px;
+				border-radius: 100%;
+			}
+
+			.right {
+				display: flex;
+				align-items: center;
+				padding-left: 10px;
+			}
+
+			.left {
+				padding-right: 20px;
+
+			}
+
+			.like {
+				color: green;
+			}
+
+			.no-like {
+				color: gray;
+			}
+
+			.words {
+				padding-left: 10px;
+			}
+
+			.author-name {
+				font-weight: 800;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="top">
+				<h2 v-if="show">推荐作者</h2>
+				<p><i class="icon-repeat"></i>↺换一批</p>
+			</div>
+			<div class="container">
+				<div class="card" v-for="book in books">
+					<div class="right">
+						<div class="avatar">
+							<img :src="book.avatar">
+						</div>
+						<div class="message">
+							<h4 class="name">{{book.name}}</h4>
+							<div class="right">{{book.message}}</div>
+						</div>
+					</div>
+					<div class="left">
+						<p v-if="book.like === true" class="like">+关注</p>
+						<p v-else class="no-like">√已关注</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show: true,
+					books: [{
+							avatar: 'img/11.jpg',
+							name: '胡七筒 ',
+							message: '写了325k字 11k喜欢',
+							like: false
+						},
+						{
+							avatar: 'img/12.jpg',
+							name: '汪波-偶遇科学',
+							message: '写了302.1k字 1.9k喜欢',
+							like: true
+						},
+						{
+							avatar: 'img/13.jpg',
+							name: '梅拾璎',
+							message: '写了269.3k字 23.4k喜欢',
+							like: false
+						},
+						{
+							avatar: 'img/14.jpg',
+							name: '徐林Grace',
+							message: '写了677.9k字 5.5k喜欢',
+							like: true
+						},
+						{
+							avatar: 'img/15.jpg',
+							name: '行距版君',
+							message: '写了535.1k字 51.8k喜欢',
+							like: true
+						}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>computed属性起步练习</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.container {
+				display: flex;
+				flex-direction: column;
+			}
+
+			.item {
+				display: flex;
+				border: 1px solid #00FFFF;
+				border-radius: 10px;
+				width: 300px;
+				height: 50px;
+				margin-bottom: 10px;
+				/*垂直居中*/
+				align-items: center;
+				/*水平居中*/
+				/*justify-content: center;*/
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+
+			.item-id {
+				flex: 1 1 20%;
+			}
+
+			.item-name {
+				flex: 1 1 30%;
+			}
+
+			.item-price {
+				flex: 1 1 20%;
+			}
+
+			.item-count {
+
+				flex: 1 1 30%;
+			}
+
+			.goods-count {
+				width: 20px;
+			}
+
+			.final {
+				display: flex;
+			}
+		</style>
+	</head>
+	<body>
+		<!--vue-app根容器-->
+		<div id="app">
+			<div class="container">
+				<div class="item" v-for="goods in goodsList">
+					<div class="ditem-id">
+						{{goods.id}}
+					</div>
+					<div class="item-name">
+						{{goods.name}}
+					</div>
+					<div class="item-price">
+						{{goods.price}}
+					</div>
+					<div class="item-count">
+						<button type="button" @click="goods.count-=1" :disabled="goods.count===0">-</button>
+						<input type="text" class="goods-count" v-model="goods.count" />
+						<button type="button" @click="goods.count+=1">+</button>
+					</div>
+				</div>
+				<hr>
+				<h3>Total price</h3>
+				<p>${{totalprice}}</p>
+				<div class="final">
+					<button type="button" @click="">结算</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			// 实例化Vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					goodsList: [{
+							id: 1,
+							name: 'iphone8',
+							price: 7000,
+							count: 1,
+						},
+						{
+							id: 2,
+							name: 'iphone7',
+							price: 5000,
+							count: 1,
+						},
+						{
+							id: 3,
+							name: 'iphoneX',
+							price: 8000,
+							count: 1,
+						}
+					]
+				},
+				methods: {},
+				computed: {
+					totalprice: function() {
+						var totalprice = 0;
+						var len = this.goodsList.length;
+						for (var i = 0; i < len; i++) {
+							totalprice += this.goodsList[i].price * this.goodsList[i].count;
+						}
+						return totalprice;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>关注作者列表页面练习</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h4>{{message}}</h4>
+		</div>
+		<script>
+			var app = new Vue({
+				el: '#app',
+				data: {
+					message: 'Hwllo Vue!'
+				},
+				methods: {
+					greeting: function(time) {
+						return 'Good' + time + '!';
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>v-on指令练习5-喜欢的练习</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" href="/vue-basic/css/font-awesome.min.css">
+		<style type="text/css">
+			.icon-plus {
+				color: #008000;
+			}
+
+			.icon-ok {
+				color: #808080;
+			}
+		</style>
+	</head>
+	<body>
+		<!--vue-app根容器-->
+		<div id="app">
+			<h2>{{name}}</h2>
+			<span class="followed link" v-show="followed === false" @click="handleFollow">
+				<i class="icon-ok"></i>已关注
+			</span>
+			<span class="cancle-followed link" v-show="followed" @click="handleFollow">
+				<i class="icon-plus"></i>关注
+			</span>
+		</div>
+		<script type="text/javascript">
+			// 实例化Vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name: '简书作者',
+					followed: true
+				},
+				methods: {
+					handleFollow: function() {
+						//  if (this.user.followed === true) {
+						//   this.user.followed = false;
+						// } else {
+						//   this.user.followed = true;
+						//}
+						this.followed = !this.followed;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

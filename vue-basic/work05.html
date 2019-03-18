@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>注册</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.name {
+				width: 250px;
+				height: 30px;
+				font-size: 16px;
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			.password {
+				width: 250px;
+				height: 30px;
+				font-size: 16px;
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			.sex {
+				width: 250px;
+				height: 30px;
+				font-size: 16px;
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			.hobby {
+				width: 250px;
+				height: 30px;
+				font-size: 16px;
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			.message {
+				width: 250px;
+				height: 30px;
+				font-size: 16px;
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			button {
+				display: block;
+				width: 250px;
+				height: 30px;
+				line-height: 40px;
+				margin: auto;
+				border: none;
+				background-color: #41B883;
+				color: #000000;
+				font-size: 16px;
+				margin-bottom: 30px;
+				text-align: center;
+			}
+
+			input:focus {
+				border-color: #549df8;
+			}
+
+			.textarea {
+				border-radius: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<form>
+				<div class="name">
+					<label for="username">姓 名：</label>
+					<input type="username" id="username" v-model="username" placeholder="用户名">
+				</div>
+				<div class="password">
+					<label for="passworld">密码：</label>
+					<input type="password" id="password" v-model="password" placeholder="密码">
+				</div>
+				<div class="password1">
+					<label for="passworld">确认密码：</label>
+					<input type="password" id="password1" v-model="password1" placeholder="确认密码">
+				</div>
+				<div class="sex">
+					<label for="sex">性 别：</label>
+					<input type="radio" id="male" value="男" v-model="sex">男
+					<input type="radio" id="female" value="女" v-model="sex">女
+				</div>
+				<div class="hobby">
+					<label for="hobbies">爱 好：</label>
+					<input type="checkbox" id="reading" value="阅读" v-model="checkedNames">
+					<label for="baidu">阅读</label>
+					<input type="checkbox" id="singing" value="唱歌" v-model="checkedNames">
+					<label for="google">唱歌</label>
+					<input type="checkbox" id="dancing" value="跳舞" v-model="checkedNames">
+					<label for="google">跳舞</label>
+				</div>
+				<div class="aboutme">
+					<label for="aboutme">个性签名：</label>
+					<textarea class="textarea" v-model="message" id="intruduce">
+				  </textarea>
+				</div>
+				<button type="button" @click="commit">提交</button>
+
+			</form>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					username: '',
+					password: '',
+					password1: '',
+					sex: '',
+					checkedNames: [],
+					message: '',
+				},
+				methods: {
+					commit: function() {
+						var name = this.username;
+						var password = this.password;
+						var password1 = this.password1;
+						if (name == '') {
+							alert("姓名不能为空")
+						} else if (password == '') {
+							alert("密码不能为空")
+						} else if (password !== password1) {
+							alert("两次输入的密码不一致");
+						} else {
+							alert("姓名:" + this.username + "\n密码:" + this.password + "\n性别:" + this.sex + "\n爱好:" + this.checkedNames +
+								"\n个性签名:" + this.message);
+						}
+					}
+				}
+			})
+		</script>
+	</body>

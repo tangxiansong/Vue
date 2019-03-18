@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>注册页面</title>
+		<!-- 通过 cdn 引入 vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<style type="text/css">
+			.head {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				height: 60px;
+				background: rgb(10, 10, 9);
+			}
+
+			#app {
+				background-image: url(img/tu.jpg);
+				background-position: center;
+				background-size: 100% 100%;
+			}
+
+			.brand-logo {
+				color: #FFF;
+				font-size: 35px;
+				margin-left: 15px;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			#right-nav {
+				display: flex;
+			}
+
+			#right-nav li {
+				list-style: none;
+				padding-right: 15px;
+			}
+
+			#right-nav li a {
+				color: #FFF;
+			}
+
+			#right-nav li a:hover {
+				text-decoration: underline;
+			}
+
+			.content {
+				width: 80%;
+				height: 650px;
+				margin: 0 auto;
+				margin-top: 30px;
+				/*position: absolute;
+				margin: auto;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;*/
+			}
+
+			.wname {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+
+			.a {
+				width: 200px;
+				height: 40px;
+				border-radius: 10px;
+				margin-left: 10px;
+				border: 1px solid #DDDDDD;
+				outline: none;
+			}
+
+			.password {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 43px;
+			}
+
+			.sex {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 43px;
+			}
+
+			.c {
+				margin-top: 15px;
+				margin-left: 5px;
+			}
+
+			.papers {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+
+			.nus {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 43px;
+			}
+
+			.intr {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 10px;
+			}
+
+			.hobby {
+				display: flex;
+				margin-top: 10px;
+				margin-left: 43px;
+			}
+
+			.f {
+				margin-top: 14px;
+			}
+
+			.footer {
+				margin-left: 80px;
+			}
+
+			.g {
+				width: 200px;
+				height: 50px;
+				border-radius: 10px;
+				border: 1px solid #DDDDDD;
+				outline: none;
+				background-color: rgb(169, 198, 228);
+				color: #FFFFFF;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- vue-app 根容器 -->
+		<div id="app">
+			<div class="head">
+				<a href="#" class="brand-logo">My World</a>
+				<ul id="right-nav">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">邮箱账号</a></li>
+					<li><a href="#">意见反馈</a></li>
+				</ul>
+			</div>
+			<div class="content">
+				<div class="wname">
+					<p>账号名称:</p>
+					<input v-model="netname" placeholder="用户名" class="a">
+				</div>
+				<div class="password">
+					<p>密码:</p>
+					<input type="password" v-model="password" placeholder=" 密 码 " class="a">
+				</div>
+				<div class="wname">
+					<p>确认密码:</p>
+					<input type="password" v-model="password1" placeholder="确认密码" class="a">
+				</div>
+				<div class="sex">
+					<p>性别:</p>
+					<div class="c">
+						<input type="radio" id="male" value="男士" v-model="sex" />
+						<label>男</label>
+						<input type="radio" id="female" value="女士" v-model="sex">
+						<label for="female">女</label>
+					</div>
+				</div>
+				<div class="papers">
+					<p>证件类型:</p>
+					<select v-model="papers" class="a">
+						<option selected="selected" value="居民身份证">居民身份证
+						</option>
+						<option value="港澳台身份证">港澳台身份证</option>
+						<option value="华侨身份证">华侨身份证</option>
+						<option value="其他">其他</option>
+					</select>
+				</div>
+				<div class="nus">
+					<p>证件:</p>
+					<input v-model="num" placeholder="请输入证件号" class="a" />
+				</div>
+				<div class="intr">
+					<p>个人介绍:</p>
+					<textarea v-model="message2" placeholder=" 简 介 " class="a"></textarea>
+				</div>
+				<div class="hobby">
+					<p>爱好：</p>
+					<div class="f">
+						<input type="checkbox" id="ge" value="唱歌" v-model="hobby">
+						<label for="baidu">唱歌</label>
+						<input type="checkbox" id="wu" value="跳舞" v-model="hobby">
+						<label for="google">跳舞</label>
+						<input type="checkbox" id="shu" value="看书" v-model="hobby">
+						<label for="tencent">看书</label>
+					</div>
+				</div>
+				<div class="footer">
+					<button type="button" @click="commit" class="g">提交</button>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//实例化一个 vue 对象
+			var app = new Vue({
+						el: '#app',
+						data: {
+							netname: '',
+							password: '',
+							sex: '',
+							selected: '',
+							num: '',
+							message2: '',
+							hobby: []
+						},
+						methods: {
+							commit: function() {
+								var name = this.netname;
+								var password = this.password;
+								var password1 = this.password1;
+								if (name == '') {
+									alert("账号不能为空")
+								} else if (password !== password1) {
+									alert("两次输入的密码不一致");
+								} else {
+									alert("你注册的内容\n 昵称:" + this.netname + "\n 密码：" +
+										this.password +
+										"\n 性别：" + this.sex +
+										"\n 证件类型：" + this.papers + "\n 证件号：" + this.num +
+										"\n 个人介绍：" + this.message2 +
+										"\n 你的爱好一共有：" + this.hobby.length + "个，分别
+										是 " + this.hobby);
+									}
+								}
+							}
+						})
+		</script>
+	</body>
+</html>

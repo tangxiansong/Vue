@@ -2,23 +2,32 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Vue.js起步练习</title>
+		<title>computed属性起步练习</title>
 		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
 	<body>
 		<!--vue-app根容器-->
 		<div id="app">
-			<h2>{{message}}</h2>
-			<h3>{{name}}</h3>
+			<button type="button" @click="show1">调用methods点击</button>
+			<button type="button" @click="show2">调用computed点击</button>
 		</div>
 		<script type="text/javascript">
 			 // 实例化Vue对象
 			var app = new Vue({
 				el: '#app',
 				data: {
-					message: 'Vue.js',
-					name: '尤雨溪',
+					name1:'methods',
+					name2:'computed',
+				},
+				methods:{
+					show1:function(){
+						console.log(this.name);
+					}
+				},
+				computed:{
+					show2:function()
+					
 				}
 			})
 		</script>

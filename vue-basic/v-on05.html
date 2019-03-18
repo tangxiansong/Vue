@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>v-on指令练习5-喜欢的练习</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" href="/vue-basic/css/font-awesome.min.css">
+		<style type="text/css">
+			.like {
+				width: 100px;
+				height: 50px;
+				color: rgb(234, 111, 90);
+				border-radius: 25px;
+				font-size: 14px;
+				background-color: #FFF;
+				border: 1px solid rgb(234, 111, 90);
+				outline: none;
+			}
+
+			.dislike {
+				width: 100px;
+				height: 50px;
+				color: #FFF;
+				border-radius: 25px;
+				font-size: 14px;
+				background-color: rgb(234, 111, 90);
+				border: 1px solid rgb(234, 111, 90);
+				/* 点击取消外边框 */
+				outline: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<button class="dislike" v-show="status == false" @click="like">
+				<i class="icon-heart"></i> 喜欢 | {{number}}
+			</button>
+			<button class="like" v-show="status" @click="dislike">
+				<i class="icon-heart-empty"></i> 不喜欢 | {{number}}
+			</button>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					status: true,
+					number: 1,
+				},
+				methods: {
+					like: function() {
+						this.status = !this.status;
+						this.number -= 1;
+					},
+					dislike: function() {
+						this.status = !this.status;
+						this.number += 1;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
