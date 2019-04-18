@@ -1,0 +1,1 @@
+<template name="5d02e7f0"><view class="_view 5d02e7f0"><input type="text" value="" bindinput="handleProxy" placeholder="输入新昵称" required="required" data-eventid="{{'5d02e7f0-0'}}" data-comkey="{{$k}}" class="_input 5d02e7f0" /><button bindtap="handleProxy" class="_button 5d02e7f0 green-btn" data-eventid="{{'5d02e7f0-1'}}" data-comkey="{{$k}}">确认</button></view></template>
